@@ -170,7 +170,10 @@ def play_game(level=1):
         num_enemies = 15
 
     for i in range(num_enemies):
-        enemy = Enemy(i * 100, 100, enemy_color, enemy_horizontal_speed, enemy_vertical_speed)
+        # Ajustes para evitar que los enemigos se generen fuera de la pantalla
+        x_position = random.randint(0, SCREEN_WIDTH - 50)  # Genera una posición x aleatoria dentro de la pantalla
+        y_position = random.randint(0, SCREEN_HEIGHT // 2 - 50)  # Genera una posición y aleatoria en la mitad superior de la pantalla
+        enemy = Enemy(x_position, y_position, enemy_color, enemy_horizontal_speed, enemy_vertical_speed)
         enemies.add(enemy)
         all_sprites.add(enemy)
 
